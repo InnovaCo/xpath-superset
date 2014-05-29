@@ -1,0 +1,22 @@
+{
+  "name": "expression-parser",
+  "version": "0.0.0",
+  "description": "Expression parser for Innova XSLT Preprocessor",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.inn.ru/template/expression-parser.git"
+  },
+  "keywords": [
+    "xpath",
+    "xsl"
+  ],
+  "author": "Sergey Chikuyonok <sergey.chikuyonok@inn.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^1.20.0"
+  }
+}
