@@ -29,4 +29,10 @@ describe('Expression Parser', function() {
 		assert.deepEqual(expr.parse('a: b'), [{value: 'b', key: 'a'}]);
 		assert.deepEqual(expr.parse('a: b, c: d'), [{value: 'b', key: 'a'}, {value: 'd', key: 'c'}]);
 	});
+
+	it('should throw exceptions on illegal token mix', function() {
+		assert.throws(function() {
+			expr.parse('a: b, c')
+		});
+	});
 });
