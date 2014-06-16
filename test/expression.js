@@ -37,6 +37,11 @@ describe('Expression Parser', function() {
 		assert.deepEqual(parse('a? if b'), [{value: 'a', condition: 'b'}]);
 	});
 
+	it('should parse complex expression', function() {
+		assert.deepEqual(parse('a if contains(b, \'foo\')'), [{value: 'a', condition: 'contains(b, \'foo\')'}]);
+		assert.deepEqual(parse('"a" if "b"'), [{value: '"a"', condition: '"b"'}]);
+	});
+
 	it('should parse lists', function() {
 		assert.deepEqual(parse('a, b'), [{value: 'a'}, {value: 'b'}]);
 		assert.deepEqual(parse('a, "b, c"'), [{value: 'a'}, {value: '"b, c"'}]);
