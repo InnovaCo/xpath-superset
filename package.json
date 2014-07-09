@@ -4,7 +4,7 @@
   "description": "Xpath superset parser for Innova XSLT Preprocessor",
   "main": "index.js",
   "scripts": {
-    "test": "make test"
+    "test": "./node_modules/.bin/mocha --reporter list"
   },
   "repository": {
     "type": "git",
