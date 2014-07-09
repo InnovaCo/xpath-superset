@@ -1,14 +1,14 @@
 {
-  "name": "expression-parser",
-  "version": "0.0.0",
-  "description": "Expression parser for Innova XSLT Preprocessor",
+  "name": "xpath-superset",
+  "version": "0.0.1",
+  "description": "Xpath superset parser for Innova XSLT Preprocessor",
   "main": "index.js",
   "scripts": {
     "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.inn.ru/template/expression-parser.git"
+    "url": "git://github.com/InnovaCo/xpath-superset.git"
   },
   "keywords": [
     "xpath",
