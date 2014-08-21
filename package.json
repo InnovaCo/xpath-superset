@@ -1,6 +1,6 @@
 {
   "name": "xpath-superset",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Xpath superset parser for Innova XSLT Preprocessor",
   "main": "index.js",
   "scripts": {
