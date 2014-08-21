@@ -22,7 +22,7 @@ function parse(e) {
 }
 
 describe('Expression Parser', function() {
-	it('should tokenize string', function() {
+	it('tokenize string', function() {
 		assert.deepEqual(expr('a'), ['a']);
 		assert.deepEqual(expr('a b'), ['a b']);
 		assert.deepEqual(expr('a{b}c'), ['a', [{value: 'b'}], 'c']);
@@ -30,19 +30,20 @@ describe('Expression Parser', function() {
 		assert.deepEqual(expr('a {{b}, c} d'), ['a ', [{value: '{b}'}, {value: 'c'}], ' d']);
 	});
 
-	it('should parse simple expression', function() {
+	it('parse simple expression', function() {
 		assert.deepEqual(parse('a'), [{value: 'a'}]);
 		assert.deepEqual(parse('a?'), [{value: 'a', condition: '?'}]);
 		assert.deepEqual(parse('a if b'), [{value: 'a', condition: 'b'}]);
 		assert.deepEqual(parse('a? if b'), [{value: 'a', condition: 'b'}]);
 	});
 
-	it('should parse complex expression', function() {
+	it('parse complex expression', function() {
 		assert.deepEqual(parse('a if contains(b, \'foo\')'), [{value: 'a', condition: 'contains(b, \'foo\')'}]);
 		assert.deepEqual(parse('"a" if "b"'), [{value: '"a"', condition: '"b"'}]);
+		assert.deepEqual(parse('fn() if a'), [{value: 'fn()', condition: 'a'}]);
 	});
 
-	it('should parse lists', function() {
+	it('parse lists', function() {
 		assert.deepEqual(parse('a, b'), [{value: 'a'}, {value: 'b'}]);
 		assert.deepEqual(parse('a, "b, c"'), [{value: 'a'}, {value: '"b, c"'}]);
 		assert.deepEqual(parse('a, "b, c", d'), [{value: 'a'}, {value: '"b, c"'}, {value: 'd'}]);
@@ -50,12 +51,12 @@ describe('Expression Parser', function() {
 		assert.deepEqual(parse('a, "b, c" if d, e'), [{value: 'a'}, {value: '"b, c"', condition: 'd'}, {value: 'e'}]);
 	});
 
-	it('should parse hashes', function() {
+	it('parse hashes', function() {
 		assert.deepEqual(parse('a: b'), [{value: 'b', key: 'a'}]);
 		assert.deepEqual(parse('a: b, c: d'), [{value: 'b', key: 'a'}, {value: 'd', key: 'c'}]);
 	});
 
-	it('should throw exceptions on illegal token mix', function() {
+	it('throw exceptions on illegal token mix', function() {
 		assert.throws(function() {
 			parse('a: b, c')
 		});
